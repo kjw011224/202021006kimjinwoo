@@ -42,19 +42,32 @@ def main():
     ax1.grid(True)
 
     # unit step 입력 그래프 그리기
-    fig1, ax1 = plt.subplots()
-    ax1.plot(t, u)
-    ax1.set(xlabel='Time', ylabel='Input', title='Unit Step Input')
-    ax1.grid(True)
+    fig2, ax2 = plt.subplots()
+    ax2.plot(t, u)
+    ax2.set(xlabel='Time', ylabel='Input', title='Unit Step Input')
+    ax2.grid(True)
 
     # 시스템 응답 그래프 그리기
-    fig1, ax1 = plt.subplots()
-    ax1.plot(t, y)
-    ax1.set(xlabel='Time', ylabel='Output', title='Step Response')
-    ax1.grid(True)
+    fig3, ax3 = plt.subplots()
+    ax3.plot(t, y)
+    ax3.set(xlabel='Time', ylabel='Output', title='Step Response')
+    ax3.grid(True)
+
+    # 주파수 응답 (보드선도) 그리기
+    w, mag, phase = signal.bode(T)
+    fig4, (ax4, ax5) = plt.subplots(2, 1)
+    ax4.semilogx(w, mag)
+    ax4.set(xlabel='Frequency [rad/s]', ylabel='Magnitude [dB]', title='Bode Plot')
+    ax4.grid(True)
+    ax5.semilogx(w, phase)
+    ax5.set(xlabel='Frequency [rad/s]', ylabel='Phase [degrees]')
+    ax5.grid(True)
 
     # 스트림릿 애플리케이션에 그래프 출력
     st.pyplot(fig1)
+    st.pyplot(fig2)
+    st.pyplot(fig3)
+    st.pyplot(fig4)
 
 if __name__ == '__main__':
     main()
