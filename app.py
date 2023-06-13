@@ -1,15 +1,35 @@
-import matplotlib
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
-
 import numpy as np
-import matplotlib.pyplot as plt
 from scipy import signal
 import streamlit as st
 
+def plot_step_response(T):
+    # 시간 범위 설정
+    t = np.linspace(0, 10, 1000)
+
+    # 단위 계단 함수 생성
+    u = np.ones_like(t)
+
+    # 시스템 응답 구하기
+    _, y = signal.step(T, T=t, X0=0)
+
+    # 응답 곡선 그리기
+    st.line_chart(y)
+
+def plot_bode_plot(T):
+    # 주파수 응답 (보드선도) 구하기
+    w, mag, phase = signal.bode(T)
+
+    # 주파수 응답 (보드선도) 그리기
+    fig, axs = st.subplots(2, 1)
+    axs[0].semilogx(w, mag)
+    axs[0].set(xlabel='Frequency [rad/s]', ylabel='Magnitude [dB]', title='Bode Plot')
+    axs[1].semilogx(w, phase)
+    axs[1].set(xlabel='Frequency [rad/s]', ylabel='Phase [degrees]')
+    st.pyplot(fig)
+
 def main():
     st.title('Control System Analysis')
-    
+
     # 전달함수 G(s)의 분자와 분모의 계수
     numerator = [100]
     denominator = [1, 5, 6]
@@ -25,34 +45,9 @@ def main():
     # 전달함수 T(s) 생성
     T = signal.TransferFunction(numerator_loop, denominator_loop)
 
-    # 시간 범위 설정
-    t = np.linspace(0, 10, 1000)
-
-    # 단위 계단 함수 생성
-    u = np.ones_like(t)
-
-    # 시스템 응답 구하기
-    t, y = signal.step(T, T=t, X0=0)
-
-    # 응답 곡선 그리기
-    fig1, ax1 = plt.subplots()
-    ax1.plot(t, y)
-    ax1.set(xlabel='Time', ylabel='Output', title='Step Response')
-    ax1.grid(True)
-
-    # 주파수 응답 (보드선도) 그리기
-    w, mag, phase = signal.bode(T)
-    fig2, (ax2, ax3) = plt.subplots(2, 1)
-    ax2.semilogx(w, mag)
-    ax2.set(xlabel='Frequency [rad/s]', ylabel='Magnitude [dB]', title='Bode Plot')
-    ax2.grid(True)
-    ax3.semilogx(w, phase)
-    ax3.set(xlabel='Frequency [rad/s]', ylabel='Phase [degrees]')
-    ax3.grid(True)
-
     # 스트림릿 애플리케이션에 그래프 출력
-    st.pyplot(fig1)
-    st.pyplot(fig2)
+    plot_step_response(T)
+    plot_bode_plot(T)
 
 if __name__ == '__main__':
     main()
