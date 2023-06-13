@@ -54,3 +54,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    st.write('202021006김진우')
