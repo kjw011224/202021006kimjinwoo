@@ -41,19 +41,20 @@ def main():
     ax1.set(xlabel='Time', ylabel='Output', title='Step Response')
     ax1.grid(True)
 
-    # 주파수 응답 (보드선도) 그리기
-    w, mag, phase = signal.bode(T)
-    fig2, (ax2, ax3) = plt.subplots(2, 1)
-    ax2.semilogx(w, mag)
-    ax2.set(xlabel='Frequency [rad/s]', ylabel='Magnitude [dB]', title='Bode Plot')
-    ax2.grid(True)
-    ax3.semilogx(w, phase)
-    ax3.set(xlabel='Frequency [rad/s]', ylabel='Phase [degrees]')
-    ax3.grid(True)
+    # unit step 입력 그래프 그리기
+    fig1, ax1 = plt.subplots()
+    ax1.plot(t, u)
+    ax1.set(xlabel='Time', ylabel='Input', title='Unit Step Input')
+    ax1.grid(True)
+
+    # 시스템 응답 그래프 그리기
+    fig1, ax1 = plt.subplots()
+    ax1.plot(t, y)
+    ax1.set(xlabel='Time', ylabel='Output', title='Step Response')
+    ax1.grid(True)
 
     # 스트림릿 애플리케이션에 그래프 출력
     st.pyplot(fig1)
-    st.pyplot(fig2)
 
 if __name__ == '__main__':
     main()
