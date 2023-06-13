@@ -1,4 +1,3 @@
-st.write('202021006 김진우')
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -72,3 +71,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    st.write('202021006 김진우')
