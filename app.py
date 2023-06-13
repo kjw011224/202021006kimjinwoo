@@ -46,8 +46,8 @@ def main():
     T = signal.TransferFunction(numerator_loop, denominator_loop)
 
     # 스트림릿 애플리케이션에 그래프 출력
-    plot_step_response(T)
-    plot_bode_plot(T)
+    st.pyplot(fig1)
+    st.pyplot(fig2)
 
 if __name__ == '__main__':
     main()
