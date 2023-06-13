@@ -1,4 +1,6 @@
-import numpy as np
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as pltimport numpy as np
 import matplotlib.pyplot as plt
 from scipy import signal
 import streamlit as st
