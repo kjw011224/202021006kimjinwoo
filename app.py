@@ -7,6 +7,8 @@ import streamlit as st
 
 def main():
     st.title('Control System Analysis')
+    
+    st.write('202021006 김진우')
 
     # 전달함수 G(s)의 분자와 분모의 계수
     numerator = [100]
@@ -14,9 +16,12 @@ def main():
 
     # 폐루프 전달함수 T(s) 구하기
     T = signal.TransferFunction(numerator, denominator)
-    
+
     # 전달함수 G(s) 출력
     st.write(f"전달함수 G(s): {numerator} / {denominator}")
+
+    # 폐루프 전달함수 T(s) 출력
+    st.write(f"폐루프 전달함수 T(s): {T.num} / {T.den}")
 
     # 시간 범위 설정
     t = np.linspace(0, 10, 1000)
@@ -63,4 +68,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-st.write('202021006 김진우')
