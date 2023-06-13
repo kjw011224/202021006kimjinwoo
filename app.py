@@ -1,3 +1,4 @@
+st.write('202021006 김진우')
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
