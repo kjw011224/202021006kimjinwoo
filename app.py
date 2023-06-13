@@ -12,19 +12,11 @@ def main():
     numerator = [100]
     denominator = [1, 5, 6]
 
-    # 전달함수 H(s)의 분자와 분모의 계수
-    numerator_feedback = [1]
-    denominator_feedback = [1]
-
     # 폐루프 전달함수 T(s) 구하기
-    numerator_loop = np.convolve(numerator, denominator_feedback)
-    denominator_loop = np.convolve(denominator, denominator_feedback)
+    T = signal.TransferFunction(numerator, denominator)
 
-    # 전달함수 T(s) 생성
-    T = signal.TransferFunction(numerator_loop, denominator_loop)
-
-    # 폐루프 전달함수 출력
-    st.write(f"폐루프 전달함수 T(s): {T}")
+    # 전달함수 G(s) 출력
+    st.write(f"전달함수 G(s): {numerator} / {denominator}")
 
     # 시간 범위 설정
     t = np.linspace(0, 10, 1000)
@@ -71,4 +63,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-    st.write('202021006 김진우')
+st.write('202021006 김진우')
