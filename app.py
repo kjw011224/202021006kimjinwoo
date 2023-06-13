@@ -49,6 +49,4 @@ def main():
     # 스트림릿 애플리케이션에 그래프 출력
     st.pyplot(fig1)
     st.pyplot(fig2)
-
-if __name__ == '__main__':
-    main()
+    
