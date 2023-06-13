@@ -23,6 +23,9 @@ def main():
     # 전달함수 T(s) 생성
     T = signal.TransferFunction(numerator_loop, denominator_loop)
 
+    # 폐루프 전달함수 출력
+    st.write(f"폐루프 전달함수 T(s): {T}")
+
     # 시간 범위 설정
     t = np.linspace(0, 10, 1000)
 
@@ -54,4 +57,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    st.write('202021006김진우')
