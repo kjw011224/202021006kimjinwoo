@@ -2,10 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import signal
 import streamlit as st
-import matplotlib
-matplotlib.use("Agg")  
-import matplotlib.pyplot as plt
-def main():
+
     
     st.title('Control System Analysis')
     
