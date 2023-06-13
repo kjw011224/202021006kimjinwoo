@@ -2,13 +2,12 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
-import matplotlib.pyplot as plt
 from scipy import signal
 import streamlit as st
 
 def main():
     st.title('Control System Analysis')
-    
+
     # 전달함수 G(s)의 분자와 분모의 계수
     numerator = [100]
     denominator = [1, 5, 6]
