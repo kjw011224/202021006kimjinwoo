@@ -15,9 +15,6 @@ def main():
     # 폐루프 전달함수 T(s) 구하기
     T = signal.TransferFunction(numerator, denominator)
     
-    # 폐루프 전달함수 출력
-    st.write(f"폐루프 전달함수 T(s): {numerator_loop} / {denominator_loop}")
-
     # 전달함수 G(s) 출력
     st.write(f"전달함수 G(s): {numerator} / {denominator}")
 
